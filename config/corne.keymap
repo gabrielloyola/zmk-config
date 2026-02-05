@@ -3,8 +3,8 @@
 #include <dt-bindings/zmk/keys.h>
 
 #define BASE 0
-#define SYM  1
-#define NAV  2
+#define NUM_MACROS  1
+#define SYMBOLS  2
 #define FUN  3
 
 / {
