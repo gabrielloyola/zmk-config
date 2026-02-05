@@ -9,7 +9,5 @@ jobs:
   build:
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.2
     with:
-      build_matrix_path: build.yaml   # opcional, default é build.yaml
-      config_path: config             # opcional, default é config
-      fallback_binary: bin            # opcional
-      archive_name: firmware          # opcional
+      fallback_binary: bin
+      archive_name: firmware
