@@ -8,6 +8,40 @@
 #define FUN  3
 
 / {
+    combos {
+        compatible = "zmk,combos";
+
+        ctrl_alt_del {
+            bindings = <&alt_del_macro>;
+            key-positions = <36 41>;
+        };
+    };
+
+    macros {
+        alt_f4: alt_f4 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kt LEFT_ALT &kp F4 &kt LEFT_ALT>;
+            label = "ALT_F4";
+        };
+
+        alt_del_macro: alt_del_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kt LCTRL &kt LEFT_ALT &kp DEL &kt LEFT_ALT &kt LCTRL>;
+            label = "ALT_DEL_MACRO";
+        };
+    };
+
+    behaviors {
+        ctrlll: ctrlll {
+            compatible = "zmk,behavior-tap-dance";
+            label = "CTRLLL";
+            #binding-cells = <0>;
+            bindings = <&mo 1>, <&kp LCTRL>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -16,10 +50,10 @@
         base_layer {
             label = "BASE";
             bindings = <
-&kp TAB     &kp Q  &kp W  &kp E     &kp R  &kp T        &kp Y      &kp U  &kp I      &kp O       &kp P      &kp BACKSPACE
-&kp LCTRL   &kp A  &kp S  &kp D     &kp F  &kp G        &kp H      &kp J  &kp K      &kp L       &kp SEMI   &kp SINGLE_QUOTE
-&kp LSHIFT  &kp Z  &kp X  &kp C     &kp V  &kp B        &kp N      &kp M  &kp COMMA  &kp PERIOD  &kp SLASH  &kp ESC
-                          &kp LGUI  &mo 1  &kp SPACE    &kp ENTER  &mo 2  &mo 2
+&kp TAB     &kp Q  &kp W  &kp E     &kp R    &kp T        &kp Y      &kp U  &kp I      &kp O       &kp P      &kp BACKSPACE
+&kp LCTRL   &kp A  &kp S  &kp D     &kp F    &kp G        &kp H      &kp J  &kp K      &kp L       &kp SEMI   &kp SINGLE_QUOTE
+&kp LSHIFT  &kp Z  &kp X  &kp C     &kp V    &kp B        &kp N      &kp M  &kp COMMA  &kp PERIOD  &kp SLASH  &kp ESC
+                          &kp LGUI  &ctrlll  &kp SPACE    &kp ENTER  &mo 2  &mo 2
             >;
         };
 
@@ -31,7 +65,7 @@
 &trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp N5           &kp NUMBER_6   &kp N7    &kp N8    &kp N9     &kp NUMBER_0  &trans
 &trans  &none         &none         &none         &none         &kp CARET        &kp PAGE_UP    &kp HOME  &kp UP    &kp END    &kp K_PREV    &kp K_NEXT
 &trans  &kp K_UNDO    &kp K_CUT     &kp K_COPY    &kp K_PASTE   &kp LA(GRAVE)    &kp PAGE_DOWN  &kp LEFT  &kp DOWN  &kp RIGHT  &none         &kp K_PLAY_PAUSE
-                                    &mo 0         &trans        &trans           &trans         &trans    &trans
+                                    &mo 0         &trans        &trans           &trans         &trans    &alt_f4
             >;
         };
 
